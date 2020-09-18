@@ -8,10 +8,10 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import SidebarChat from './SidebarChat/SidebarChat';
 
 interface Props {
-
+  toggleContent: Function;
 }
 
-function Sidebar({ }: Props): ReactElement {
+function Sidebar({ toggleContent }: Props): ReactElement {
   return (
     <div className='sidebar'>
       <div className="sidebar__header">

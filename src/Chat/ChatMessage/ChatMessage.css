@@ -1,0 +1,41 @@
+
+.chat__message {
+  position: relative;
+  font-size: 16px;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 45px;
+  background-color: white;
+  margin-bottom: 30px;
+  border-bottom-left-radius: 0;
+  box-shadow: 5px 5px 10px #f0f0f0, -5px -5px 10px #ffffff;
+  max-width: 80%;
+}
+
+.chat__receiver {
+  margin-left: auto;
+  background-color: #d2f8c6;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 45px;
+  box-shadow: 5px 5px 10px #c5e9ba, -5px -5px 10px #dfffd2;
+}
+.chat__receiver > span.chat__name {
+  right: 0;
+}
+
+.chat__timestamp {
+  margin-left: 10px;
+  font-size: xx-small;
+}
+
+.chat__name {
+  position: absolute;
+  top: -15px;
+  font-weight: 800;
+  font-size: xx-small;
+  transition: font-size 0.2s ease;
+}
+
+.chat__name:hover {
+  font-size: small;
+}
