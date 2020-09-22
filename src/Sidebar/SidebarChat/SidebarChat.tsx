@@ -40,7 +40,7 @@ function SidebarChat({ addNewChart, name, lastMessage, roomId, onChatSelect }: P
 
   const chatSelectedHander = (avatarUri: string) => {
     if (onChatSelect) onChatSelect();
-    history.push(`/chats/${roomId}?avatar=${avatarUri}`);
+    history.push(`/chats/${roomId}?avatar=${avatarUri}&room=${name}`);
   }
 
   return (

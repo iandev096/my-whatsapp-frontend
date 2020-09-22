@@ -101,8 +101,11 @@ function Chat({ switchToSidebarMode }: Props): ReactElement {
         <Avatar src={query.get('avatar') || `https://avatars.dicebear.com/api/human/400.svg`} />
 
         <div className="chat__headerInfo">
-          <h3>Room name</h3>
-          <p>Last seen at ...</p>
+          <h3>{query.get('room')}</h3>
+          {query.get('lastMessageTime') ?
+            <p>Last message at {new Date(query.get('lastMessageTime') as string)}</p> :
+            <p>No message posted</p>
+          }
         </div>
 
         <div className={`chat__headerRight ${isMobile && 'chat__headerRight--mobile'}`}>

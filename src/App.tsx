@@ -34,9 +34,9 @@ function App() {
               <Route path='/chats/:id'>
                 {showChat && <Chat switchToSidebarMode={switchToSidebarMode} />}
               </Route>
-              <Route path='/'>
+              {/* <Route path='/'>
                 <h1>I am homescreen</h1>
-              </Route>
+              </Route> */}
             </Switch>
           </Router>
         }
