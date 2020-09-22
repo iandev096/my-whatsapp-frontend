@@ -4,6 +4,9 @@
   flex: 0.35;
   background-color: white;
 }
+.sidebar--mobile {
+  flex: 1;
+}
 
 .sidebar__header {
   display: flex;
@@ -63,4 +66,8 @@
   flex: 1;
   background-color: white;
   overflow: scroll;
+}
+
+.sidebar__chats::-webkit-scrollbar {
+  display: none;
 }

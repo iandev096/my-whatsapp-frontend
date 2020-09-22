@@ -3,6 +3,9 @@
   flex-direction: column;
   flex: 0.65;
 }
+.chat--mobile {
+  flex: 1
+}
 
 .chat__header {
   padding: 20px;
@@ -34,6 +37,10 @@
   box-shadow: 5px 5px 10px #dfdfdf, -5px -5px 10px #fbfbfb;
 }
 
+.chat__headerRight--mobile{
+  display: none;
+}
+
 .chat__body {
   flex: 1;
   background-image: url("https://dzbc.org/wp-content/uploads/data/2018/2/19/Background.max-x-PIC-MCH043354.jpg");
@@ -42,6 +49,13 @@
   padding: 30px;
   overflow: scroll;
   box-shadow: inset 7px 7px 18px #c9c9c9, inset -7px -7px 18px #ffffff;
+}
+.chat__body::-webkit-scrollbar {
+  display: none;
+}
+
+.chat__body::-webkit-scrollbar {
+  display: inline;
 }
 
 .chat__footer {
