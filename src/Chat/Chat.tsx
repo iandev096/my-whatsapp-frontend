@@ -30,34 +30,6 @@ function Chat({ switchToSidebarMode }: Props): ReactElement {
   const { id: roomId } = useParams<any>();
   const query = useQuery();
 
-  useEffect(function pusherLogic() {
-    const pusher = new Pusher('e423d5e59cc0580b5d3c', {
-      cluster: 'mt1'
-    });
-
-    const channel = pusher.subscribe(`channel_${roomId}`);
-    channel.bind('inserted', (newMessage: messageRes) => {
-
-      if (newMessage) {
-        dispatch({
-          type: 'ADD_MESSAGE',
-          message: newMessage,
-          roomId
-        });
-        dispatch({
-          type: 'SET_CHAT_ROOM_LAST_MESSAGE',
-          message: newMessage,
-          roomId
-        })
-      }
-    });
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    }
-  }, [roomId, dispatch]);
-
 
   useEffect(function fetchChatMessages() {
     if (!roomId) return;
@@ -102,10 +74,7 @@ function Chat({ switchToSidebarMode }: Props): ReactElement {
 
         <div className="chat__headerInfo">
           <h3>{query.get('room')}</h3>
-          {query.get('lastMessageTime') ?
-            <p>Last message at {new Date(query.get('lastMessageTime') as string)}</p> :
-            <p>No message posted</p>
-          }
+          {/* <p>Last seen ...</p>  */}
         </div>
 
         <div className={`chat__headerRight ${isMobile && 'chat__headerRight--mobile'}`}>

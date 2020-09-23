@@ -12,7 +12,7 @@ export type chatRoom = {
   name: string,
   lastMessage?: message,
 }
-export type chatRooms ={
+export type chatRooms = {
   [chatRoomId: string]: chatRoom
 }
 
@@ -23,15 +23,16 @@ export type message = {
   room: string,
   timestamp: string,
 }
-export type messages =  {
+export type messages = {
   [chatRoomId: string]: message[]
 }
-
+export type authMode = 'isAuthenticating' | 'isAuthenticated' | 'authFailed';
 export interface DataLayerState {
   user?: user,
   chatRooms: chatRooms,
   messages: messages,
-  searchedRooms: chatRoom[]
+  searchedRooms: chatRoom[],
+  authMode?: authMode
 }
 
 export type DataLayerAction = {
@@ -61,4 +62,7 @@ export type DataLayerAction = {
   type: 'ADD_MESSAGE',
   roomId: string,
   message: messageRes
+} | {
+  type: 'SET_AUTH_MODE',
+  authMode: authMode,
 };

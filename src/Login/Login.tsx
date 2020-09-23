@@ -11,29 +11,35 @@ interface Props {
 }
 
 function Login({ }: Props): ReactElement {
-  const [, dispatch] = useContext(DataLayerContext)
+  const [{authMode}, dispatch] = useContext(DataLayerContext)
 
   const signInHandler = async () => {
-    const res = await auth.signInWithPopup(provider);
-    if (!res.user) return;
-    const userIdToken = await res.user.getIdToken();
-    const uid = res.user.uid;
-    const name = res.user.displayName;
-    console.log(res.user.displayName);
-    const createdUser = await axios.post<userRes>('/api/v1/users/new', {
-      name,
-      uid
-    });
+    try {
+      dispatch({ type: 'SET_AUTH_MODE', authMode: 'isAuthenticating' });
+      const res = await auth.signInWithPopup(provider);
+      if (!res.user) return;
+      const userIdToken = await res.user.getIdToken();
+      const uid = res.user.uid;
+      const name = res.user.displayName;
+      console.log(res.user.displayName);
+      const createdUser = await axios.post<userRes>('/api/v1/users/new', {
+        name,
+        uid
+      });
 
-    dispatch({
-      type: 'SET_USER',
-      user: {
-        uid,
-        name: createdUser.data.name,
-        _id: createdUser.data._id,
-        idToken: userIdToken
-      }
-    });
+      dispatch({
+        type: 'SET_USER',
+        user: {
+          uid,
+          name: createdUser.data.name,
+          _id: createdUser.data._id,
+          idToken: userIdToken
+        }
+      });
+      dispatch({ type: 'SET_AUTH_MODE', authMode: 'isAuthenticated' });
+    } catch (err) {
+      dispatch({ type: 'SET_AUTH_MODE', authMode: 'authFailed'});
+    }
   }
 
   return (
@@ -43,7 +49,7 @@ function Login({ }: Props): ReactElement {
         <div className="login__text">
           <h1> IWhatsApp</h1>
         </div>
-        <Button type='submit' onClick={() => signInHandler()}>Sign In With Google</Button>
+        <Button type='submit' disabled={authMode === 'isAuthenticating'} onClick={() => signInHandler()}>Sign In With Google</Button>
       </div>
     </div>
   )

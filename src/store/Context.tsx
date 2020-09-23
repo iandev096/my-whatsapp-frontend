@@ -5,7 +5,8 @@ export const initialDataLayerState: DataLayerState = {
   user: undefined,
   chatRooms: {},
   messages: {},
-  searchedRooms: []
+  searchedRooms: [],
+  authMode: undefined 
 };
 
 export const DataLayerContext = createContext<[

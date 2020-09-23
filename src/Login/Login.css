@@ -23,5 +23,11 @@
   text-transform: inherit !important;
   color: white;
 }
+.login__container > button:disabled {
+  background-color: #71b544!important;
+  color: white!important;
+  opacity: 0.7;
+  cursor: not-allowed!important;
+}
 
 .login__text {}

@@ -12,6 +12,6 @@
   width: 90vw;
   border-radius: 45px;
   background: #ededed;
-  box-shadow: 20px 20px 40px #bbbbbb, -20px -20px 40px #ffffff;
+  box-shadow: 6px 6px 40px #bbbbbb, -20px -20px 40px #ffffff;
   overflow: hidden;
 }

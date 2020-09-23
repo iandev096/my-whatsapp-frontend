@@ -108,6 +108,12 @@ export const reducer = (state: DataLayerState, action: DataLayerAction): DataLay
         }
       }
 
+    case 'SET_AUTH_MODE':
+      return {
+        ...state,
+        authMode: action.authMode
+      }
+
     default:
       return state;
   }
